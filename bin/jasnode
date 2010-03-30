@@ -3,8 +3,12 @@
 # Copyright (c) 2010 Cory Ondrejka. All rights reserved.
 # See MIT.LICENSE for licensing details.
 
+jasnode_base = File.expand_path File.join(File.dirname(__FILE__), '..', 'lib')
+$LOAD_PATH.unshift(jasnode_base) unless $LOAD_PATH.include?(jasnode_base)
+
 require 'rubygems'
 require 'commander/import'
+require 'jasnode'
 
 def get_version
   require "yaml"
@@ -18,9 +22,21 @@ program :description, 'Easy Jasmine BDD with Node.js'
 default_command :spec
 
 command :spec do |c|
-   c.syntax = 'jasnode spec'
-   c.description = 'Runs spec using jasmine and node.js'
-   c.action do |args, options|
-     puts "should do stuff"
-   end
- end
+  c.syntax = 'jasnode spec'
+  c.description = 'Runs spec using jasmine and node.js'
+  c.action do |args, options|
+    puts "should do stuff"
+  end
+end
+
+command :init do |c|
+  c.syntax = 'jasnode init <project>'
+  c.description = 'Initiazlie a project directory for node.js that jasnode can test'
+  c.example 'Create a new project directory ready for jasmine testing called "myproject"', 'jasnode init myproject'
+  c.action do |args, options|
+    projectname = args.shift or raise 'Project name required'
+    Jasnode::Init.template(projectname)
+    say "Project template initialized at `#{projectname}'"
+  end
+end
+  

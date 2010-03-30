@@ -1,13 +1,6 @@
 require 'rubygems'
 require 'rake'
  
-namespace :spec do
-  desc 'Run jspec executable specs'
-  task :bin do
-    sh 'spec --color --require spec/ruby/bin/spec_helper.rb spec/ruby/bin/*_spec.rb'
-  end
-end
- 
 namespace :jeweler do
   unless File.exists?('jasmine/lib')
     raise "Jasmine submodule isn't present. Run git submodule update --init"
