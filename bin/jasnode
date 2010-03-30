@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+# Copyright (c) 2010 Cory Ondrejka. All rights reserved.
+# See MIT.LICENSE for licensing details.
+
+require 'rubygems'
+require 'commander/import'
+
+def get_version
+  require "yaml"
+  v = YAML.load_file(File.expand_path(File.join(File.dirname(__FILE__), "..", "VERSION.yml")))
+  "#{v[:major]}.#{v[:minor]}.#{v[:build]}.#{v[:patch]}"
+end
+
+program :name, 'jasnode'
+program :version, get_version
+program :description, 'Easy Jasmine BDD with Node.js'
+default_command :spec
+
+command :spec do |c|
+   c.syntax = 'jasnode spec'
+   c.description = 'Runs spec using jasmine and node.js'
+   c.action do |args, options|
+     puts "should do stuff"
+   end
+ end
