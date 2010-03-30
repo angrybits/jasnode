@@ -18,24 +18,27 @@ describe('Spec', function() {
           response.addListener("end", function() {
             expect(response_body).toEqual("hi!");
             response_body = "";
-            jasmine.asyncSpecDone();
+            jasmine.async_spec_done();
           });
         });
         request.close();
       }, 1);
-      jasmine.asyncSpecWait();
+      jasmine.async_spec_wait();
     });
 
     it('should respond to puts on 8000', function() {
-      server.server.listen(8000);
-      setTimeout(function() {
+      runs(function() {
         var connection = http.createClient(8000, "127.0.0.1");
         var request = connection.request("POST","/", {"host" : "127.0.0.1"});
         request.write("howdy!", encoding="ascii");
         request.close();
-        }, 200);
+        }, 20);
         
-      expect(server.results).toEqual("POST / 127.0.0.1: howdy!")
+      waits(100);
+      
+      runs(function() { 
+        expect(server.results).toEqual("POST / /: howdy!")
+      });
     });
   });
 });

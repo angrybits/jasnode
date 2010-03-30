@@ -11,10 +11,10 @@ Scenario: correctly initialize directories
   When I give the jasnode command init "newproject"
   Then I should have a properly populated "newproject" directory
 
-Scenario: title
-  Given context
-  When event
-  Then outcome
+Scenario: run javascript specs
+  Given a jasnode directory
+  When I give the jasnode command spec
+  Then I should see test results
 
 
 

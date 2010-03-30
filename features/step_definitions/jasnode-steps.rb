@@ -1,6 +1,6 @@
 # Copyright (c) 2010 Cory Ondrejka. All rights reserved.
 # See MIT.LICENSE for licensing details.
-JASNODE_BIN = File.expand_path File.join(File.dirname(__FILE__), '..', '..', 'bin')
+JASNODE_BIN = File.join(File.dirname(__FILE__), '..', '..', 'bin')
 
 Given /^I am ready to work$/ do
 end
@@ -19,4 +19,18 @@ Then /^I should have a properly populated "([^\"]*)" directory$/ do |arg1|
   File.exist?("#{@name}/Rakefile").should == true
   FileUtils.rm_rf("#{@name}")
   File.exist?("#{@name}").should == false
+end
+
+Given /^a jasnode directory$/ do
+  @name = "spectest"
+  %x[#{JASNODE_BIN}/jasnode init #{@name}].should == "Project template initialized at `#{@name}'\n"
+end
+
+When /^I give the jasnode command spec$/ do
+  Dir.chdir(@name)
+  %x[../#{JASNODE_BIN}/jasnode spec].should == "Starting jasmine spec\n"
+end
+
+Then /^I should see test results$/ do
+  pending # express the regexp above with the code you wish you had
 end

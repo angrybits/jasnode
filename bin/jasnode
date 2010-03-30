@@ -25,7 +25,8 @@ command :spec do |c|
   c.syntax = 'jasnode spec'
   c.description = 'Runs spec using jasmine and node.js'
   c.action do |args, options|
-    puts "should do stuff"
+    say "Starting jasmine spec"
+    Jasnode::Spec.spec
   end
 end
 
