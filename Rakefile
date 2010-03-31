@@ -27,6 +27,7 @@ Jeweler::Tasks.new do |gemspec|
   gemspec.email = "cory.ondrejka+jasnode@gmail.com"
   gemspec.homepage = "http://angrybits.github.com/jasnode"
   gemspec.authors = ["Cory Ondrejka"]
+  gemspec.add_dependency('commander', '>= 4.0.2')
   gemspec.executables = ["jasnode"]
   gemspec.files.include %w( jasmine/**/* )
 end
