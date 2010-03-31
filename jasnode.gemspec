@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{jasnode}
-  s.version = "0.2.0.0"
+  s.version = "0.4.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Cory Ondrejka"]
@@ -134,7 +134,6 @@ Gem::Specification.new do |s|
      "lib/jasnode.js",
      "lib/jasnode.rb",
      "lib/jasnode/core.rb",
-     "pkg/jasnode-0.1.0.0.gem",
      "spec/jasnode/jasnode_spec.rb",
      "spec/rspec_suite.rb",
      "spec/spec_helper.rb",
@@ -150,7 +149,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://angrybits.github.com/jasnode}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.5}
+  s.rubygems_version = %q{1.3.6}
   s.summary = %q{Jasmine Ruby Runner}
   s.test_files = [
     "spec/jasnode/jasnode_spec.rb",

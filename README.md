@@ -4,6 +4,48 @@ Inspired by [node-jasmine](http://github.com/mhevery/jasmine-node), Angrybits Ja
 
 ## Getting Started
 
+Grab the gem
+
+    $ [sudo] gem install jasnode
+    
+Create a project template
+
+    $ jasnode MyProject
+    
+This will create the following hierarchy
+
+    MyProject
+    |-- bin
+    |   `-- hello_world           <- replace with your main executable
+    |-- lib
+    |   `-- server.js             <- your libraries go here
+    |-- Rakefile
+    `-- spec
+        |-- README.md
+        |-- runner.js             <- you'll need to add your libraries here
+        |-- server
+        |   |-- server_spec.js    <- test specs, replace with your own
+        |   `-- spec_server.js
+        `-- spec.js
+    
+You can then run the jasmine tests using node
+
+    $ cd MyProject
+    $ jasnoda spec
+    
+You can also use common rake tasks
+
+    $ rake
+    $ rake test
+    $ rake cruise
+    $ rake examples
+    
+All of these map to
+
+    $ jasnoda spec
+    
+The exit value is the number of failures, so 0 in the success case, so this should play nicely with CI and other tools.
+    
 ## License
 
 Copyright (c) 2010 Cory Ondrejka

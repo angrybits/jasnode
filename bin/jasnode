@@ -21,7 +21,7 @@ program :version, get_version
 program :description, 'Easy Jasmine BDD with Node.js'
 program :formatter, :compact
 
-default_command :spec
+default_command :help
 
 command :spec do |c|
   c.syntax = 'jasnode spec [options]'
@@ -35,7 +35,13 @@ command :spec do |c|
       options.log = true
     end
     options.default :logfile => "logfile.txt"
-    puts Jasnode::Spec.spec(options.verbose, options.log ? options.logfile : nil)
+    results = Jasnode::Spec.spec(options.verbose, options.log ? options.logfile : nil)
+    puts results
+    if results =~ /(\d+) failure/
+      exit($1.to_i)
+    else
+      exit(-1)
+    end
   end
 end
 
@@ -47,6 +53,23 @@ command :init do |c|
     projectname = args.shift or raise 'Project name required'
     Jasnode::Init.template(projectname)
     say "Project template initialized at `#{projectname}'"
+    say <<-eos
+    
+    #{projectname}
+    |-- bin
+    |   `-- hello_world           <- replace with your main executable
+    |-- lib
+    |   `-- server.js             <- your libraries go here
+    |-- Rakefile
+    `-- spec
+        |-- README.md
+        |-- runner.js             <- you'll need to add your libraries here
+        |-- server
+        |   |-- server_spec.js    <- test specs, replace with your own
+        |   `-- spec_server.js
+        `-- spec.js
+
+    eos
   end
 end
   

@@ -1,5 +1,6 @@
 # Copyright (c) 2010 Cory Ondrejka. All rights reserved.
 # See MIT.LICENSE for licensing details.
+require 'fileutils.rb'
 
 module Jasnode
   class Spec
@@ -156,13 +157,13 @@ for ( var key in jasmine) {
     end
     
     def self.spec(verbose, logfile)
-      File.open(File.join("lib", "jasnode.js"), "w") {|f| f.write(Jasnode::Spec.build_jasmine_test_file(Jasnode::Spec.find_jasmine, Jasnode::Spec.find_specs(Dir.pwd), true)) }
+      File.open(File.expand_path(File.join("lib", "jasnode.js")), "w") {|f| f.write(Jasnode::Spec.build_jasmine_test_file(Jasnode::Spec.find_jasmine, Jasnode::Spec.find_specs(Dir.pwd), true)) }
       Dir.chdir("spec")
       output = ""
       if logfile
         output = %x[node runner.js > #{logfile}]
       else
-        putput = puts %x[node runner.js]
+        output = %x[node runner.js]
       end
       Dir.chdir("..")
       output
@@ -171,9 +172,7 @@ for ( var key in jasmine) {
   
   class Init
     def self.template(projectname)
-      require "ftools"
-      template_base = File.join(File.dirname(__FILE__), '..', '..', 'templates')
-      File.makedirs("#{projectname}")
+      template_base = File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'templates'))
       FileUtils.cp_r("#{template_base}/.", "#{projectname}")
     end
   end

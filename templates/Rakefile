@@ -1,9 +1,16 @@
 require 'rubygems'
 require 'rake'
+
+task :default => [:examples]
  
-namespace :spec do
-  desc 'Run jspec executable specs'
-  task :bin do
-    sh 'spec --color --require spec/ruby/bin/spec_helper.rb spec/ruby/bin/*_spec.rb'
-  end
+task :examples do
+  sh 'jasnode spec'
+end
+
+task :test do
+  sh 'jasnode spec'
+end
+
+task :cruise do
+  sh 'jasnode spec'
 end
