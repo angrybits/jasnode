@@ -19,14 +19,23 @@ end
 program :name, 'jasnode'
 program :version, get_version
 program :description, 'Easy Jasmine BDD with Node.js'
+program :formatter, :compact
+
 default_command :spec
 
 command :spec do |c|
-  c.syntax = 'jasnode spec'
+  c.syntax = 'jasnode spec [options]'
   c.description = 'Runs spec using jasmine and node.js'
+  c.option "--verbose", "Run verbosely"
+  c.option "--log", "Log output to [logfile] if defined, otherwise to logfile.txt"
+  c.option "--logfile FILE", "Destination for logging, implies --log"
+    
   c.action do |args, options|
-    say "Starting jasmine spec"
-    Jasnode::Spec.spec
+    if options.logfile
+      options.log = true
+    end
+    options.default :logfile => "logfile.txt"
+    puts Jasnode::Spec.spec(options.verbose, options.log ? options.logfile : nil)
   end
 end
 

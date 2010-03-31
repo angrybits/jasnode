@@ -28,9 +28,10 @@ end
 
 When /^I give the jasnode command spec$/ do
   Dir.chdir(@name)
-  %x[../#{JASNODE_BIN}/jasnode spec].should == "Starting jasmine spec\n"
+  @output = %x[../#{JASNODE_BIN}/jasnode spec]
 end
 
 Then /^I should see test results$/ do
-  pending # express the regexp above with the code you wish you had
+  @output = @output.split("\n")
+  @output[-1].should == "\e[1m12 examples\e[22m, \e[32m0 failures\e[39m"
 end

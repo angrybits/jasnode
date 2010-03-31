@@ -1,0 +1,8 @@
+Starting spec run at 16:57:43
+.........
+
+
+
+Finished in 0.335 seconds
+[1m12 examples[22m, [32m0 failures[39m
+
