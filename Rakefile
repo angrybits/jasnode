@@ -30,5 +30,3 @@ Jeweler::Tasks.new do |gemspec|
   gemspec.executables = ["jasnode"]
   gemspec.files.include %w( jasmine/**/* )
 end
-
-Jeweler::GemcutterTasks.new
