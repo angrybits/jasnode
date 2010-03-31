@@ -1,9 +1,0 @@
-require 'rubygems'
-require 'rake'
- 
-namespace :spec do
-  desc 'Run jspec executable specs'
-  task :bin do
-    sh 'spec --color --require spec/ruby/bin/spec_helper.rb spec/ruby/bin/*_spec.rb'
-  end
-end

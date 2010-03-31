@@ -2,15 +2,11 @@ require File.join(File.dirname(__FILE__), "..", "spec_helper")
 require "ftools"
  
 describe Jasnode::Spec do
-  before(:all) do
-    template_base = File.join(File.dirname(__FILE__), '..', "..", 'templates')
+  before(:each) do
+    template_base = File.expand_path(File.join(File.dirname(__FILE__), '..', "..", 'templates'))
     @name = File.expand_path(File.join(File.dirname(__FILE__), "spectest"))
     File.makedirs("#{@name}")
     FileUtils.cp_r("#{template_base}/.", @name)
-  end
-  
-  after(:all) do
- #   FileUtils.rm_rf(@name)
   end
   
   it "should find all the javascript spec files" do
@@ -35,6 +31,10 @@ describe Jasnode::Spec do
     output = %x[../../../bin/jasnode spec]
     output = output.split("\n")
     output[-1].should == "\e[1m12 examples\e[22m, \e[32m0 failures\e[39m"
+    Dir.chdir("..")
   end
 
+  after(:each) do
+    FileUtils.rm_rf(@name)
+  end
 end

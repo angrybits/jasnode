@@ -34,4 +34,6 @@ end
 Then /^I should see test results$/ do
   @output = @output.split("\n")
   @output[-1].should == "\e[1m12 examples\e[22m, \e[32m0 failures\e[39m"
+  Dir.chdir("..")
+  FileUtils.rm_rf("#{@name}")
 end
