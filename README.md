@@ -36,7 +36,7 @@ You can then run the jasmine tests using node
 You can also use common rake tasks
 
     $ rake
-    $ rake test
+    $ rake test:units
     $ rake cruise
     $ rake examples
     
@@ -44,7 +44,7 @@ All of these map to
 
     $ jasnode spec
     
-The exit value is the number of failures, so 0 in the success case, so this should play nicely with CI and other tools.
+The exit value is the number of failures, so 0 in the success case, so this should play nicely with CI Joe and other tools.
     
 ## License
 
