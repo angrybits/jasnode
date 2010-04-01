@@ -7,8 +7,10 @@ task :examples do
   sh 'jasnode spec'
 end
 
-task :test do
-  sh 'jasnode spec'
+namespace :test do
+  task :units do
+    sh 'jasnode spec'
+  end
 end
 
 task :cruise do

@@ -21,7 +21,7 @@ This will create the following hierarchy
     |   `-- server.js             <- your libraries go here
     |-- Rakefile
     `-- spec
-        |-- README.md             <- this file
+        |-- README.md
         |-- runner.js             <- you'll need to add your libraries here
         |-- server
         |   |-- server_spec.js    <- test specs, replace with your own
@@ -42,7 +42,7 @@ You can also use common rake tasks
     
 All of these map to
 
-    $ jasnoda spec
+    $ jasnode spec
     
 The exit value is the number of failures, so 0 in the success case, so this should play nicely with CI and other tools.
     

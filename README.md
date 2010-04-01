@@ -42,7 +42,7 @@ You can also use common rake tasks
     
 All of these map to
 
-    $ jasnoda spec
+    $ jasnode spec
     
 The exit value is the number of failures, so 0 in the success case, so this should play nicely with CI and other tools.
     

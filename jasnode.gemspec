@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{jasnode}
-  s.version = "0.4.1.0"
+  s.version = "0.4.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Cory Ondrejka"]
@@ -131,7 +131,6 @@ Gem::Specification.new do |s|
      "jasmine/src/util.js",
      "jasmine/src/version.json",
      "jasnode.gemspec",
-     "lib/jasnode.js",
      "lib/jasnode.rb",
      "lib/jasnode/core.rb",
      "spec/jasnode/jasnode_spec.rb",
