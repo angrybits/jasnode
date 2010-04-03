@@ -39,7 +39,9 @@ describe('server spec', function() {
       runs(function() { 
         expect(server.results).toEqual("POST / /: howdy!")
         server.server.close();
+        jasmine.async_spec_done();
       });
+      jasmine.async_spec_wait();
     });
   });
 });
