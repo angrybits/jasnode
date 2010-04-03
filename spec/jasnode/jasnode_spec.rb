@@ -10,11 +10,14 @@ describe Jasnode::Spec do
   end
   
   it "should find all the javascript spec files" do
-    Jasnode::Spec.find_specs(@name).should == ["/Users/cory/src/jasnode/spec/jasnode/spectest/spec/server/server_spec.js", "/Users/cory/src/jasnode/spec/jasnode/spectest/spec/spec.js", "/Users/cory/src/jasnode/spec/jasnode/spectest/spec/server/spec_server.js"]
+    specs = Jasnode::Spec.find_specs(@name)
+    specs[0].find("spec/server/server_spec.js").should_not == nil
+    specs[1].find("spec/jasnode/spectest/spec/spec.js").should_not == nil
+    specs[2].find("spec/jasnode/spectest/spec/server/spec_server.js").should_not == nil
   end
   
   it "should find the current jasmine lib" do
-    Jasnode::Spec.find_jasmine.should == ["/Users/cory/src/jasnode/lib/jasnode/../../jasmine/lib/jasmine-0.10.2.js"]
+    Jasnode::Spec.find_jasmine[0].find("jasmine/lib/jasmine").should_not == nil
   end
   
   it "should correctly generate the text to build a jasmine runner" do

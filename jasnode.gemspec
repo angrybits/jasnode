@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{jasnode}
-  s.version = "0.4.2.0"
+  s.version = "0.4.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Cory Ondrejka"]
-  s.date = %q{2010-03-31}
+  s.date = %q{2010-04-03}
   s.default_executable = %q{jasnode}
   s.description = %q{Easy Jasmine BDD with Node.js}
   s.email = %q{cory.ondrejka+jasnode@gmail.com}
@@ -136,10 +136,10 @@ Gem::Specification.new do |s|
      "spec/jasnode/jasnode_spec.rb",
      "spec/rspec_suite.rb",
      "spec/spec_helper.rb",
+     "templates/README.md",
      "templates/Rakefile",
      "templates/bin/hello_world",
      "templates/lib/server.js",
-     "templates/spec/README.md",
      "templates/spec/runner.js",
      "templates/spec/server/server_spec.js",
      "templates/spec/server/spec_server.js",
@@ -162,11 +162,14 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<commander>, [">= 4.0.2"])
+      s.add_runtime_dependency(%q<jeweler>, [">= 1.4.0"])
     else
       s.add_dependency(%q<commander>, [">= 4.0.2"])
+      s.add_dependency(%q<jeweler>, [">= 1.4.0"])
     end
   else
     s.add_dependency(%q<commander>, [">= 4.0.2"])
+    s.add_dependency(%q<jeweler>, [">= 1.4.0"])
   end
 end
 

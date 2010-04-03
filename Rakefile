@@ -18,7 +18,6 @@ Cucumber::Rake::Task.new(:features) do |t|
   t.cucumber_opts = "features --format pretty"
 end
 
-
 require 'jeweler'
 Jeweler::Tasks.new do |gemspec|
   gemspec.name = "jasnode"
@@ -28,6 +27,7 @@ Jeweler::Tasks.new do |gemspec|
   gemspec.homepage = "http://angrybits.github.com/jasnode"
   gemspec.authors = ["Cory Ondrejka"]
   gemspec.add_dependency('commander', '>= 4.0.2')
+  gemspec.add_dependency('jeweler', '>= 1.4.0')
   gemspec.executables = ["jasnode"]
   gemspec.files.include %w( jasmine/**/* )
 end

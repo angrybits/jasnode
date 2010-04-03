@@ -9,7 +9,7 @@ end
 
 When /^I give the jasnode command init "([^\"]*)"$/ do |projectname|
   @name = projectname
-  %x[#{JASNODE_BIN}/jasnode --trace init #{@name}].should == "Project template initialized at `#{@name}'\n"
+  %x[#{JASNODE_BIN}/jasnode init #{@name}].should == "Project template initialized at `#{@name}'\n    \n    newproject\n    |-- bin\n    |   `-- hello_world           <- replace with your main executable\n    |-- lib\n    |   `-- server.js             <- your libraries go here\n    |-- Rakefile\n    `-- spec\n        |-- README.md\n        |-- runner.js             <- you'll need to add your libraries here\n        |-- server\n        |   |-- server_spec.js    <- test specs, replace with your own\n        |   `-- spec_server.js\n        `-- spec.js\n\n"
 end
 
 Then /^I should have a properly populated "([^\"]*)" directory$/ do |arg1|
@@ -24,7 +24,7 @@ end
 
 Given /^a jasnode directory$/ do
   @name = "spectest"
-  %x[#{JASNODE_BIN}/jasnode init #{@name}].should == "Project template initialized at `#{@name}'\n"
+  %x[#{JASNODE_BIN}/jasnode init #{@name}].should == "Project template initialized at `#{@name}'\n    \n    spectest\n    |-- bin\n    |   `-- hello_world           <- replace with your main executable\n    |-- lib\n    |   `-- server.js             <- your libraries go here\n    |-- Rakefile\n    `-- spec\n        |-- README.md\n        |-- runner.js             <- you'll need to add your libraries here\n        |-- server\n        |   |-- server_spec.js    <- test specs, replace with your own\n        |   `-- spec_server.js\n        `-- spec.js\n\n"
 end
 
 When /^I give the jasnode command spec$/ do
