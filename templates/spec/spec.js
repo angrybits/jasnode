@@ -22,7 +22,7 @@ describe('base direcotry spec', function() {
           });
         });
         request.close();
-      }, 1);
+      }, 20);
       jasmine.async_spec_wait();
     });
 
@@ -34,7 +34,7 @@ describe('base direcotry spec', function() {
         request.close();
         }, 20);
         
-      waits(100);
+      waits(400);
       
       runs(function() { 
         expect(server.results).toEqual("POST / /: howdy!")
